@@ -30,10 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Usager
  */
-@WebServlet(
-    name        = "frontController",
-    urlPatterns = { "/frontController" }
-)
+
 public class frontController extends HttpServlet {
 
     /**
@@ -51,46 +48,46 @@ public class frontController extends HttpServlet {
 
         try {
             String choix = request.getParameter("action");
-            RequestDispatcher r     = this.getServletContext().getRequestDispatcher("/index.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
 
             if (choix != null) {
                 if ("login".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/signin");
+                    r = this.getServletContext().getRequestDispatcher("/signIn");
                     r.forward(request, response);
                     return;
                 }
 
-                if ("ConnectUser".equals(choix.trim())) {
-                    r = this.getServletContext().getRequestDispatcher("/ConnectUser");
+                if ("connectUser".equals(choix.trim())) {
+                    r = this.getServletContext().getRequestDispatcher("/connectUser");
                     r.forward(request, response);
                     return;
                 }
 
-                if ("lgt".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/signout");
+                if ("logout".equals(choix)) {
+                    r = this.getServletContext().getRequestDispatcher("/signOut");
                     r.forward(request, response);
                     return;
                 }
-                if ("Refresh".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/Refresh");
+                if ("refresh".equals(choix)) {
+                    r = this.getServletContext().getRequestDispatcher("/refresh");
                     r.forward(request, response);
                     return;
                 }
 
-                if ("Inscription".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/Subscription");
+                if ("subscribe".equals(choix)) {
+                    r = this.getServletContext().getRequestDispatcher("/subscribe");
                     r.forward(request, response);
                     return;
                 }
                 
-                if ("invit".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/Invit");
+                if ("invite".equals(choix)) {
+                    r = this.getServletContext().getRequestDispatcher("/invite");
                     r.forward(request, response);
                     return;
                 }
 
-                if ("subscription".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/index.jsp");
+                if ("request".equals(choix)) {
+                    r = this.getServletContext().getRequestDispatcher("/request");
                     r.forward(request, response);
                     return;
                 }
@@ -107,34 +104,36 @@ public class frontController extends HttpServlet {
                     return;
                 }
 
+                if ("showProfile".equals(choix))
+                {
+                    r = this.getServletContext().getRequestDispatcher("/showProfile");  
+                    r.forward(request, response);                 
+                    return;
+                }
+                if ("updateProfile".equals(choix))
+                {
+                    r = this.getServletContext().getRequestDispatcher("/updateProfile");  
+                    r.forward(request, response);                 
+                }
+                
                 if ("regles".equals(choix))
                 {
-                r = this.getServletContext().getRequestDispatcher("/index.jsp"); 
-                r.forward(request, response);     
-                return;
+                    r = this.getServletContext().getRequestDispatcher("/index.jsp"); 
+                    r.forward(request, response);     
+                    return;
                 } 
-
-                if ("request".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/Request");
+                
+                if ("subscription".equals(choix)) {
+                    r = this.getServletContext().getRequestDispatcher("/index.jsp");
                     r.forward(request, response);
                     return;
                 }
-                if ("acceuil".equals(choix))
+                
+                if ("accueil".equals(choix))
                 {
                     r = this.getServletContext().getRequestDispatcher("/index.jsp");  
                     r.forward(request, response);                   
                     return;
-                }
-                if ("profil".equals(choix))
-                {
-                    r = this.getServletContext().getRequestDispatcher("/AfficherProfil");  
-                    r.forward(request, response);                 
-                    return;
-                }
-                if ("changeProfil".equals(choix))
-                {
-                    r = this.getServletContext().getRequestDispatcher("/ProfilUpdate");  
-                    r.forward(request, response);                 
                 }
             }
         }

@@ -52,7 +52,7 @@ public class ProfilUpdate extends HttpServlet {
             System.out.println("Mise à jour non effectuée.------------------------------------");
         }
 
-        this.getServletContext().getRequestDispatcher("/index.jsp?action=acceuil").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/index.jsp?action=accueil").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

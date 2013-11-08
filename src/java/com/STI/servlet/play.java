@@ -38,10 +38,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Usager
  */
-@WebServlet(
-    name        = "play",
-    urlPatterns = { "/play" }
-)
+
 public class play extends HttpServlet {
 
     
@@ -68,7 +65,7 @@ public class play extends HttpServlet {
         }
         this.getServletContext().setAttribute("connectes", connectes);
         
-        this.getServletContext().getRequestDispatcher("/index.jsp?action=acceuil").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/index.jsp?action=accueil").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

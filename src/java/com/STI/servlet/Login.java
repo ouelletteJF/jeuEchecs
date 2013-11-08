@@ -9,12 +9,12 @@
  *	Dernière modification:	-
  *	Raison mise à jour:	-
  *
- *	À faire:    Où cette classe est-elle utilisée?
+ *	À faire:    
  *
 */
 package com.STI.servlet;
 
-//~--- non-JDK imports --------------------------------------------------------
+//~--- Non-JDK imports --------------------------------------------------------
 
 import com.STI.dao.*;
 import com.STI.dao.Userdao;
@@ -54,12 +54,9 @@ public class Login extends HttpServlet {
                p = request.getParameter("mdp");
 
         if ((u == null) || u.trim().equalsIgnoreCase("")) {
-
-            // Utilisateur inexistant
             request.setAttribute("message", "Le nom d'utilisateur est obligatoire");
 
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/login.jsp");
-
             r.forward(request, response);
 
             return;
@@ -77,32 +74,25 @@ public class Login extends HttpServlet {
         Utilisateur user = dao.read(u.trim());
 
         if (user == null) {
-
             // Utilisateur inexistant
             request.setAttribute("message", "Utilisateur " + u + " inexistant.");
 
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
-
             r.forward(request, response);
-        } else if (!user.getMdp().equals(p)) {
-
+        } 
+        else if (!user.getMdp().equals(p)) {
             // Mot de passe incorrect
             request.setAttribute("message", "Mot de passe incorrect.");
 
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
-
             r.forward(request, response);
-        } else {
-
+        } 
+        else {
             // connexion OK
             HttpSession session = request.getSession(true);
 
             session.setAttribute("connecte", u);
-            session.setAttribute("play","no");
-
-            // changer le statut de lutilisateur dans la base de donnée a connecte=true.
-            //dao.updateConnect(user, 1);
-            
+            session.setAttribute("play", "no");
             
             this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }

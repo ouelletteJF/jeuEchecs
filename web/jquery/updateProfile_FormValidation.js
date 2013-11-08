@@ -1,113 +1,125 @@
+/*
+ *  
+ *  CONTENU: Fonction qui valide le formulaire de modification du profil à
+ *           l'aide de jQuery
+ * 
+ */
+
 $(document).ready(function(){
+    var resultat = true;
 
-var resultat = true;
-
-$('#Formulaire').submit(function(){ 
+    $('#Formulaire').submit(function(){ 
 
         if($('#courrielProfil').val()=="")
-	{
+        {
             $('#courrielProfil').css('border-color', 'red');
             $('#courrielProfil').css({"background-color": "red"});
             $('#courrielProfil').css({"color": "yellow"});
             $('#courrielProfil').focus();
             resultat = false;
-	}
+        }
 
-        
+
         if($('#mdpProfil').val()=="")
-	{
+        {
             $('#mdpProfil').css('border-color', 'red');
             $('#mdpProfil').css({"background-color": "red"});
             $('#mdpProfil').css({"color": "yellow"});
             $('#mdpProfil').focus();
             resultat = false;
-	}
-        
+        }
+
         if($('#nomProfil').val()=="")
-	{
+        {
             $('#nomProfil').css('border-color', 'red');
             $('#nomProfil').css({"background-color": "red"});
             $('#nomProfil').css({"color": "yellow"});
             $('#nomProfil').focus();
             resultat = false;
-	}        
-	return resultat;
-});
+        }        
+        return resultat;
+    });
 
 
-$('#nomProfil').keyup(function(){
-	if($('#nomProfil').val().length<3)
-	{
-		$('#nomProfil').css('border-color', 'red');
+    $('#nomProfil').keyup(function(){
+        if($('#nomProfil').val().length<3)
+        {
+                $('#nomProfil').css('border-color', 'red');
                 $('.imgNom').fadeOut();
-		return false;
-	}
-	else
-	{
-		$('#nomProfil').css('border-color', 'yellow'); 
+                return false;
+        }
+        else
+        {
+                $('#nomProfil').css('border-color', 'yellow'); 
                 $('#nomProfil').css({"background-color": "#52D017"});
                 $('#nomProfil').css({"color": "black"});
                 $('#nomProfil').after($('.imgNom').delay(300).fadeIn());
-	}
-	return resultat; 
-});
+        }
+        return resultat; 
+    });
 
-$('#mdpProfil').keyup(function(){
-	if($('#mdpProfil').val().length<6)
-	{
-		$('#mdpProfil').css('border-color', 'red');
+
+    $('#mdpProfil').keyup(function(){
+
+        if($('#mdpProfil').val().length<6)
+        {
+                $('#mdpProfil').css('border-color', 'red');
                 $('.imgMdp').fadeOut();
-		return false;
-	}
-	else
-	{
-		$('#mdpProfil').css('border-color', 'yellow'); 
+                return false;
+        }
+        else
+        {
+                $('#mdpProfil').css('border-color', 'yellow'); 
                 $('#mdpProfil').css({"background-color": "#52D017"});
                 $('#mdpProfil').css({"color": "black"});
                 $('#mdpProfil').after($('.imgMdp').delay(300).fadeIn());
-	}
-	return resultat; 
-});
+        }
 
-
-$('#courrielProfil').keyup(function(){
-         var validCourriel = $('#courrielProfil').val();
-         if( isValidEmailAddress( validCourriel ) ) 
-         {  
-            $('#courrielProfil').css('border-color', 'yellow'); 
-            $('#courrielProfil').css({"background-color": "#52D017"});
-            $('#courrielProfil').css({"color": "black"});
-            $('#courrielProfil').after($('.imgCourriel').delay(300).fadeIn());
-         }
-         else
-         {
-            $('#courrielProfil').css('border-color', 'red');
-            $('.imgCourriel').fadeOut();
-            return false;
-         }
-         return resultat; 
-});
+        return resultat; 
+    });
 
 
 
-$('#btModifier').click(function(){
-    if ($('#mdpProfil').prop("disabled"))
-    {
-        $('#courrielProfil').prop("disabled", false);
-        $('#mdpProfil').prop("disabled", false);
-        $('#btModifier').val("Annuler");
-        $('#btUpdate').prop("disabled", false);
-    }
-    else 
+    $('#courrielProfil').keyup(function(){
+
+        var validCourriel = $('#courrielProfil').val();
+
+        if( isValidEmailAddress( validCourriel ) ) 
+        {  
+           $('#courrielProfil').css('border-color', 'yellow'); 
+           $('#courrielProfil').css({"background-color": "#52D017"});
+           $('#courrielProfil').css({"color": "black"});
+           $('#courrielProfil').after($('.imgCourriel').delay(300).fadeIn());
+        }
+        else
+        {
+           $('#courrielProfil').css('border-color', 'red');
+           $('.imgCourriel').fadeOut();
+           return false;
+        }
+
+        return resultat; 
+    });
+
+
+
+    $('#btModifier').click(function(){
+
+        if ($('#mdpProfil').prop("disabled"))
+        {
+            $('#courrielProfil').prop("disabled", false);
+            $('#mdpProfil').prop("disabled", false);
+            $('#btModifier').val("Annuler");
+            $('#btUpdate').prop("disabled", false);
+        }
+        else 
         {
             $('#courrielProfil').prop("disabled", true);
             $('#mdpProfil').prop("disabled", true);
             $('#btModifier').val("Modifier");
             $('#btUpdate').prop("disabled", true);
         }
-});
-
-
+    });
 
 });
 

@@ -1,8 +1,16 @@
+
+/*
+ * 
+ *  CONTENU : Fonction qui rafraichit la liste des invitations, des joueurs et des parties à l'aide d'AJAX
+ * 
+ */
+
+
 var xho;
 
-function listConnectes()
-{   
-    url = "http://localhost:8080/Chess/ConnectUser";//"getInvit.exe?action=invit";
+function Refresh()
+{       
+    url = "http://localhost:8080/Chess/Refresh";//"getInvit.exe?action=invit";
 
     if (window.ActiveXObject) //si Internet Explorer
     { 
@@ -24,7 +32,7 @@ function listConnectes()
         {
             xho.open("POST",url,true);
         }
-        catch (e){
+        catch (e) {
             alert(e);
         }
         
@@ -32,14 +40,25 @@ function listConnectes()
     }
 }
 
+
 function processStateChange()
 {
     if (xho.readyState == 4) //complété
         if (xho.status == 200)  //réponse OK
-            document.getElementById("connectes").innerHTML = xho.responseText;
+        {
+            rep = xho.responseText;
+              
+            reponse = eval("("+rep+")");
+            document.getElementById("listeInvitations").innerHTML = reponse.invitation;
+            document.getElementById("listeJoueurs").innerHTML = reponse.ConnectUsers;
+            document.getElementById("listeParties").innerHTML = reponse.parties;
+        }
         else
+        {
             alert("Problème : " + xho.statusText);
+        }
 }
 
 
         
+

@@ -10,7 +10,7 @@
             Utilisateur unUser = (Utilisateur)request.getAttribute("leProfil");
     %>
        
-        <form id="Formulaire" action="changeProfil.exe" method="post">
+        <form id="Formulaire" action="updateProfile.exe" method="post">
             <h1 align="center" >Profil de <%out.println(unUser.getName().toString());%> </h1> 	
             
             <table> 
@@ -77,7 +77,7 @@
                         <input type="submit" value="Mettre à jour" id="btUpdate" disabled/>
                     </td>
 
-                    <input type="hidden" name="action" value="changeProfil" />
+                    <input type="hidden" name="action" value="updateProfile" />
                 </tr>        
             </table>    
         </form> 

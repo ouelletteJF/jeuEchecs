@@ -13,108 +13,148 @@
     <listener>
         <listener-class>com.STI.web.ApplicationListener</listener-class>
     </listener>
+    
+    
+    <!-- Contrôleur frontal -->
     <servlet>
         <servlet-name>controleur</servlet-name>
         <servlet-class>com.STI.servlet.frontController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>login</servlet-name>
-        <servlet-class>com.STI.servlet.Login</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ConnectUser</servlet-name>
-        <servlet-class>com.STI.servlet.ConnectUser</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>play</servlet-name>
-        <servlet-class>com.STI.servlet.play</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Refresh</servlet-name>
-        <servlet-class>com.STI.servlet.Refresh</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>logout</servlet-name>
-        <servlet-class>com.STI.servlet.Logout</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Subscription</servlet-name>
-        <servlet-class>com.STI.servlet.Subscription</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Request</servlet-name>
-        <servlet-class>com.STI.servlet.Request</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AfficherProfil</servlet-name>
-        <servlet-class>com.STI.servlet.AfficherProfil</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ProfilUpdate</servlet-name>
-        <servlet-class>com.STI.servlet.ProfilUpdate</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Invit</servlet-name>
-        <servlet-class>com.STI.servlet.Invit</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Game</servlet-name>
-        <servlet-class>com.STI.servlet.Game</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>controleur</servlet-name>
         <url-pattern>*.exe</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet Login -->
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>com.STI.servlet.Login</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>login</servlet-name>
-        <url-pattern>/signin</url-pattern>
+        <url-pattern>/signIn</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet ConnectUser -->
+    <servlet>
+        <servlet-name>connectUser</servlet-name>
+        <servlet-class>com.STI.servlet.ConnectUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>connectUser</servlet-name>
+        <url-pattern>/connectUser</url-pattern>
+    </servlet-mapping>
+    
+    
+    <!-- Servlet Logout -->
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.STI.servlet.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/signOut</url-pattern>
+    </servlet-mapping>
+    
+    
+    <!-- Servlet Play -->
+    <servlet>
+        <servlet-name>play</servlet-name>
+        <servlet-class>com.STI.servlet.play</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>play</servlet-name>
         <url-pattern>/play</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet Refresh -->
+    <servlet>
+        <servlet-name>refresh</servlet-name>
+        <servlet-class>com.STI.servlet.Refresh</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>Refresh</servlet-name>
-        <url-pattern>/Refresh</url-pattern>
+        <servlet-name>refresh</servlet-name>
+        <url-pattern>/refresh</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet Subscription -->
+    <servlet>
+        <servlet-name>subscription</servlet-name>
+        <servlet-class>com.STI.servlet.Subscription</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>logout</servlet-name>
-        <url-pattern>/signout</url-pattern>
+        <servlet-name>subscription</servlet-name>
+        <url-pattern>/subscribe</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet Request -->
+    <servlet>
+        <servlet-name>request</servlet-name>
+        <servlet-class>com.STI.servlet.Request</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>ConnectUser</servlet-name>
-        <url-pattern>/ConnectUser</url-pattern>
+        <servlet-name>request</servlet-name>
+        <url-pattern>/request</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet ShowProfile -->
+    <servlet>
+        <servlet-name>showProfile</servlet-name>
+        <servlet-class>com.STI.servlet.AfficherProfil</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>Subscription</servlet-name>
-        <url-pattern>/Subscription</url-pattern>
+        <servlet-name>showProfile</servlet-name>
+        <url-pattern>/showProfile</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet UpdateProfile -->
+    <servlet>
+        <servlet-name>updateProfile</servlet-name>
+        <servlet-class>com.STI.servlet.ProfilUpdate</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>Request</servlet-name>
-        <url-pattern>/Request</url-pattern>
+        <servlet-name>updateProfile</servlet-name>
+        <url-pattern>/updateProfile</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Servlet Invite -->
+    <servlet>
+        <servlet-name>invite</servlet-name>
+        <servlet-class>com.STI.servlet.Invit</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>Invit</servlet-name>
-        <url-pattern>/Invit</url-pattern>
+        <servlet-name>invite</servlet-name>
+        <url-pattern>/invite</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AfficherProfil</servlet-name>
-        <url-pattern>/AfficherProfil</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ProfilUpdate</servlet-name>
-        <url-pattern>/ProfilUpdate</url-pattern>
-    </servlet-mapping>
+    
+    
+    <!-- Servlet Game | TO TAKE CARE OF -->
+    <servlet>
+        <servlet-name>Game</servlet-name>
+        <servlet-class>com.STI.servlet.Game</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Game</servlet-name>
         <url-pattern>/Game</url-pattern>
     </servlet-mapping>
+
+
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    
 </web-app>

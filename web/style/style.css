@@ -107,13 +107,19 @@ body
                 /* border: 1px solid green; */
             }
 
-            #listeJoueurs
+            #joueurs
             {
                 margin-top: 0%;
                 min-height: 400px;
                 
                 background-image: url(../images/backgroundDiv.png);
                 /* border: 1px solid red; */
+            }
+            
+            #leftPanel a
+            {
+                color : white;
+                text-decoration : none;
             }
 
         #rightPanel

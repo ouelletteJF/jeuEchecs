@@ -6,7 +6,7 @@
 
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     
-    <form id="Formulaire" action="Inscription.exe" method="post">
+    <form id="Formulaire" action="subscribe.exe" method="post">
 		
         <table>        
             <h1 align="center" >Fiche d'inscription </h1>
@@ -63,7 +63,7 @@
                     <input type="submit" value="Créer mon compte" />
                 </td>
 
-                <input type="hidden" name="action" value="Inscription" />
+                <input type="hidden" name="action" value="subscribe" />
             </tr>
         </table>
     </form>

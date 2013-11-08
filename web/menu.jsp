@@ -10,16 +10,16 @@
 <div id='cssmenu'>
 
     <% 
-        if (session.getAttribute("connecte")==null)  //déjà connecté
+        if (session.getAttribute("connecte") == null)  //déjà connecté
         {
     %>
             <ul>
                 <li>
-                    <a href="Acceuil.exe?action=acceuil"><span>Accueil</span></a>
+                    <a href="accueil.exe?action=accueil"><span>Accueil</span></a>
                 </li>
 
                 <li>
-                    <a href="Inscription.exe?action=subscription"><span>Inscription</span></a>
+                    <a href="subscribe.exe?action=subscription"><span>Inscription</span></a>
                 </li>
 
                 <li>
@@ -32,7 +32,7 @@
     %>   
             <ul>
                 <li>
-                    <a href='Acceuil.exe?action=acceuil'><span>Accueil</span></a>
+                    <a href='acceuil.exe?action=accueil'><span>Accueil</span></a>
                 </li>
 
                 <% 
@@ -53,7 +53,7 @@
                     }
                 %>
                     <li>
-                        <a href='profil.exe?action=profil'><span>Mon profil</span></a>
+                        <a href='profile.exe?action=showProfile'><span>Mon profil</span></a>
                     </li>
 
                     <li>
@@ -61,7 +61,7 @@
                     </li>
 
                     <li>
-                        <a href="logout.exe?action=lgt"> <span>Déconnexion - </span> <%=session.getAttribute("connecte")%> </a>
+                        <a href="logout.exe?action=logout"> <span>Déconnexion - </span> <%=session.getAttribute("connecte")%> </a>
                     </li>
            </ul>
 

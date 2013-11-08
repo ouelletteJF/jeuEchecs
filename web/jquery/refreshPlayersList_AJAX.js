@@ -1,8 +1,15 @@
+
+/*
+ * 
+ * CONTENU : 
+ * 
+ */
+
 var xho;
 
-function Refresh()
-{       
-    url = "http://localhost:8080/Chess/Refresh";//"getInvit.exe?action=invit";
+function listConnectes()
+{   
+    url = "http://localhost:8080/Chess/ConnectUser";//"getInvit.exe?action=invit";
 
     if (window.ActiveXObject) //si Internet Explorer
     { 
@@ -24,7 +31,7 @@ function Refresh()
         {
             xho.open("POST",url,true);
         }
-        catch (e) {
+        catch (e){
             alert(e);
         }
         
@@ -32,26 +39,14 @@ function Refresh()
     }
 }
 
-
 function processStateChange()
 {
     if (xho.readyState == 4) //complété
         if (xho.status == 200)  //réponse OK
-        {
-            rep = xho.responseText;
-              
-            reponse = eval("("+rep+")");
-            document.getElementById("invitations").innerHTML = "Invitation(s) : "+reponse.invitation;
-            document.getElementById("connectes").innerHTML = "joueur(s) connect&eacute(s): "+reponse.ConnectUsers;
-            document.getElementById("PartieEnCours").innerHTML = "Partie en cours : "+reponse.parties;
-
-        }
+            document.getElementById("listeJoueurs").innerHTML = xho.responseText;
         else
-        {
             alert("Problème : " + xho.statusText);
-        }
 }
 
 
         
-

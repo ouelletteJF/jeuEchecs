@@ -1,4 +1,10 @@
 
+/*
+ * 
+ * CONTENU : Fonction qui fait apparaître ou disparaitre le menu de connexion
+ * 
+ */
+
 $(document).ready(function(){
     
     $('#seConnecter').click(function(){
