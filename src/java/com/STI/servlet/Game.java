@@ -42,12 +42,13 @@ public class Game extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+        /*
             String PartieName= (String)request.getParameter("players");
             this.getServletContext().setAttribute("CreateGame", PartieName );
             this.getServletContext().setAttribute("indice", "true" );
-            //request.setAttribute("Players",PartieName);
-            this.getServletContext().getRequestDispatcher("/index.jsp?action=startGame");
+            //request.setAttribute("Players",PartieName); 
+           */ this.getServletContext().getRequestDispatcher("/index.jsp?action=startGame").forward(request, response);
+           
 
     }
 

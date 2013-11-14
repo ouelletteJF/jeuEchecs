@@ -53,6 +53,7 @@ public class Login extends HttpServlet {
         String u = request.getParameter("nom"),
                p = request.getParameter("mdp");
 
+        // Si aucun nom d'utilisateur n'est saisi...
         if ((u == null) || u.trim().equalsIgnoreCase("")) {
             request.setAttribute("message", "Le nom d'utilisateur est obligatoire");
 
@@ -61,7 +62,8 @@ public class Login extends HttpServlet {
 
             return;
         }
-
+        
+        // Connexion à la BD
         try {
             Class.forName(this.getServletContext().getInitParameter("piloteJdbc"));
         } catch (ClassNotFoundException ex) {
@@ -73,28 +75,28 @@ public class Login extends HttpServlet {
         Userdao     dao  = new Userdao(Connexion.getInstance());
         Utilisateur user = dao.read(u.trim());
 
+        // Utilisateur inexistant
         if (user == null) {
-            // Utilisateur inexistant
             request.setAttribute("message", "Utilisateur " + u + " inexistant.");
 
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
             r.forward(request, response);
         } 
+        // Mot de passe incorrect
         else if (!user.getMdp().equals(p)) {
-            // Mot de passe incorrect
             request.setAttribute("message", "Mot de passe incorrect.");
 
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
             r.forward(request, response);
-        } 
+        }
+        // Connexion OK 
         else {
-            // connexion OK
             HttpSession session = request.getSession(true);
 
-            session.setAttribute("connecte", u);
-            session.setAttribute("play", "no");
+            user.setPlay(false);
+            session.setAttribute("connecte", user);
             
-            this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/index.jsp?action=accueil").forward(request, response);
         }
     }
 

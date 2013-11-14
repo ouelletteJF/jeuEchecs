@@ -47,22 +47,24 @@ public class play extends HttpServlet {
 
         HttpSession session = request.getSession(true);
         Userdao     dao     = new Userdao(Connexion.getInstance());
-        String      name    = (String) session.getAttribute("connecte");
-        Utilisateur user    = dao.read(name);
-        List<Utilisateur> connectes = (List<Utilisateur>) this.getServletContext().getAttribute("connectes");
-
-        if ("ready".equals(request.getParameter("activity"))) {     // Si le joueur entre en mode «Joueur»
+        Utilisateur user    = (Utilisateur)session.getAttribute("connecte");
+        List<Utilisateur> connectes = (List<Utilisateur>)this.getServletContext().getAttribute("connectes");
+        
+        // Si le joueur entre en mode «Joueur»
+        if ( "play".equals(request.getParameter("activity")) ) {     
             dao.updatePlay(user, 1);
-            session.setAttribute("play", "yes");
+            user.setPlay(true);
             
             if (connectes.contains(user) == false)
                 connectes.add(user);
         }
-        else if ("observer".equals(request.getParameter("activity"))) {     // Si le joueur entre en mode «Observateur»
+        // Si le joueur entre en mode «Observateur»
+        else if ( "observe".equals(request.getParameter("activity")) ) {     
             dao.updatePlay(user, 0);
-            session.setAttribute("play", "observer");
+            user.setPlay(false);
             connectes.remove(user);
         }
+        
         this.getServletContext().setAttribute("connectes", connectes);
         
         this.getServletContext().getRequestDispatcher("/index.jsp?action=accueil").forward(request, response);

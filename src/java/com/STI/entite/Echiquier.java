@@ -17,7 +17,7 @@ package com.STI.entite;
 
 public class Echiquier {
     int max = 8;
-    Piece[][] listPieces = new Piece[8][8];
+    Piece[][] listPieces = new Piece[max][max];
     Position posPieceCourante;
 	
     public Echiquier() 

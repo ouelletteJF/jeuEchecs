@@ -1,47 +1,36 @@
 /*
- *	Fichier:	ConnectUser.java
- *	Contenu:	Servlet qui gère la connexion d'un joueur.
+ *	Fichier:	LaunchGame.java
+ *	Contenu:	Servlet qui lance une partie.
  *
  *	Auteur:		??
  *	Version:	1.0
  *
  *	Date de création:	??
- *	Dernière modification:	2 novembre 2013
- *	Raison mise à jour:	Correction de l'indentation et simplification du code.
+ *	Dernière modification:	-
+ *	Raison mise à jour:	-
  *
- *	À faire:    Même code que l'une des sections de la page Refresh...
+ *	À faire:    
  *
 */
 package com.STI.servlet;
 
-//~--- non-JDK imports --------------------------------------------------------
-
-import com.STI.dao.Userdao;
+import com.STI.entite.Partie;
 import com.STI.entite.Utilisateur;
-import com.STI.jdbc.Connexion;
-
-//~--- JDK imports ------------------------------------------------------------
-
 import java.io.IOException;
-
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author eikichie
+ * @author JF
  */
-@WebServlet(
-    name        = "ConnectUser",
-    urlPatterns = { "/ConnectUser" }
-)
-public class ConnectUser extends HttpServlet {
+public class LaunchGame extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -54,35 +43,21 @@ public class ConnectUser extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utilisateur user;
-        String resultat="";
+        HttpSession session = request.getSession(true);
+        Map<String, Partie> parties = (HashMap<String,Partie>)this.getServletContext().getAttribute("parties");
+        String j1 = request.getParameter("player1");
+        String j2 = request.getParameter("player2");       
         
-        List<Utilisateur> ConnectedUsers = (List<Utilisateur>)this.getServletContext().getAttribute("connectes");
-        int size= ConnectedUsers.size();
+        ((Utilisateur)session.getAttribute("connecte")).setGameId(j1);
         
-        if (size > 0) { 
-            resultat +="<table>";
-            
-            for (int i=0; i<size; i++)
-            {
-                user = (Utilisateur)ConnectedUsers.get(i);
-                String name= (String)request.getSession().getAttribute("connecte"); 
-                
-                if (!user.getName().equals(name))
-                    resultat += "<tr> <td> <a href='Inviter.exe?action=request&&invited=" + user.getName() + "' >" + user.getName() + "</a></td></tr>";
-            }
-            
-            resultat += "</table>";
-        }
-        else
-            resultat = "aucun joueur connectés";
-
-       System.out.println(""+resultat);
-       response.getWriter().write("liste des joueurs <br />"+resultat);
+        parties.put(j1, new Partie((j1 + " | " + j2), j1, j2));
+        
+        this.getServletContext().setAttribute("parties", parties);     
+        
+        this.getServletContext().getRequestDispatcher("/index.jsp?action=startGame").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
     /**
      * Handles the HTTP
      * <code>GET</code> method.
@@ -121,8 +96,5 @@ public class ConnectUser extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }    // </editor-fold>
+    }// </editor-fold>
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

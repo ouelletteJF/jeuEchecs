@@ -1,64 +1,68 @@
+
 /*
- *      NON PERTINENT POUR LE TP
- *         
- *	Fichier:	ProfiluPDATE.java
- *	Contenu:	Servlet qui met à jour le profil du joueur lorsqu'il est modifié dans la page Profil.
+ *	Fichier:	updateChessboard_AJAX.java
+ *	Contenu:	Fichier JS (AJAX) qui permet le rafraichissement des échiquiers des joueurs d'une partie.
  *
- *	Auteur:		??
+ *	Auteur:		Jean-François Ouellette
  *	Version:	1.0
  *
- *	Date de création:	??
+ *	Date de création:	12 novembre 2013
  *	Dernière modification:	-
  *	Raison mise à jour:	-
  *
- *	À faire:    -
+ *	À faire:    
  *
 */
+
 package com.STI.servlet;
 
-import com.STI.dao.Userdao;
+import com.STI.entite.Partie;
 import com.STI.entite.Utilisateur;
-import com.STI.jdbc.Connexion;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
- * @author s4d3k
+ * @author aaa
  */
-public class ProfilUpdate extends HttpServlet {
+public class UpdateGame extends HttpServlet {
 
-   
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        response.setContentType("text/html;charset=UTF-8");
+        String resultat = "[";
         HttpSession session = request.getSession(true);
-        String     user = ((Utilisateur)session.getAttribute("connecte")).getName(),
-                   psw     =  request.getParameter("mdpProfil"),
-                   email   =  request.getParameter("courrielProfil");
-        Utilisateur u        = new Utilisateur(user, psw, email);
-        Userdao     dao      = new Userdao(Connexion.getInstance()); 
-       
-        System.out.println(user);
-        System.out.println(psw);
-        System.out.println(email);
+        Map<String, Partie> parties = (HashMap<String,Partie>)this.getServletContext().getAttribute("parties");
+        Utilisateur connectedUser = (Utilisateur)session.getAttribute("connecte");
         
-        if (dao.updateUserInfo(u)) {
-            System.out.println("Mise à jour effectuée.");
-        } else {
-            System.out.println("Mise à jour non effectuée.------------------------------------");
-        }
-
-        this.getServletContext().getRequestDispatcher("/index.jsp?action=accueil").forward(request, response);
+        // Chaque ligne ajoutée à résultat est une combinaison de l'id de la case et de l'image à insérer
+        for(int i = 1; i <= 8; i++)
+            for(int j = 1; j <= 8; j++) 
+                if( parties.get( connectedUser.getGameId() ).getTable().get(i - 1, j - 1) != null ) // BUG ICI
+                    resultat += "{ \"id\" : \"#l" + i + "c" + j +"\", \"image\": \"" + parties.get( connectedUser.getGameId() ).getTable().get(i - 1, j - 1).getImage() + "\" }, ";
+        
+        resultat += "]";
+        
+        response.getWriter().write(resultat);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -72,8 +76,7 @@ public class ProfilUpdate extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -95,4 +98,5 @@ public class ProfilUpdate extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

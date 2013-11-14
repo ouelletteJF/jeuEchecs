@@ -10,7 +10,7 @@
 function reinitEchiquier()
 {
     var i, j;
-    
+
     // Reinitialisation des images
     for (i = 0; i < 8; i++ )
         for (j = 0; j < 8; j++ ) 
@@ -35,17 +35,17 @@ function reinitEchiquier()
     document.getElementById('echiquier').rows[7].cells[5].innerHTML = "<img src='./images/bFou.gif' class='piece' />";
     
     // Reines (1,4 | 8,4)
-    document.getElementById('echiquier').rows[0].cells[3].innerHTML = "<img src='./images/bReine.gif' class='piece' />"; 
+    document.getElementById('echiquier').rows[0].cells[3].innerHTML = "<img src='./images/reineNoire.gif' class='piece' />"; 
     document.getElementById('echiquier').rows[7].cells[3].innerHTML = "<img src='./images/bReine.gif' class='piece' />";
     
     // Rois (1,5 | 8,5)
-    document.getElementById('echiquier').rows[0].cells[4].innerHTML = "<img src='./images/bRoi.gif' class='piece' />"; 
+    document.getElementById('echiquier').rows[0].cells[4].innerHTML = "<img src='./images/nRoi.gif' class='piece' />"; 
     document.getElementById('echiquier').rows[7].cells[4].innerHTML = "<img src='./images/bRoi.gif' class='piece' />";
     
     // Pions noirs
     for (i = 0; i < 8; i++ )
-        //document.getElementById('echiquier').rows[1].cells[i].innerHTML = "<img src='./images/nPion.gif' class='piece' />";
-        document.getElementById('echiquier').rows[1].cells[i].innerHTML = "<img src='./images/bPion.gif' class='piece' />";
+        document.getElementById('echiquier').rows[1].cells[i].innerHTML = "<img src='./images/nPion.gif' class='piece' />";
+        //document.getElementById('echiquier').rows[1].cells[i].innerHTML = "<img src='./images/bPion.gif' class='piece' />";
     
     // Pions blancs
     for (i = 0; i < 8; i++ )

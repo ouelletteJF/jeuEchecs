@@ -13,19 +13,16 @@
     <listener>
         <listener-class>com.STI.web.ApplicationListener</listener-class>
     </listener>
-    
-    
     <!-- Contrôleur frontal -->
     <servlet>
         <servlet-name>controleur</servlet-name>
         <servlet-class>com.STI.servlet.frontController</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>controleur</servlet-name>
         <url-pattern>*.exe</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Servlet Login -->
     <servlet>
         <servlet-name>login</servlet-name>
@@ -35,19 +32,6 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/signIn</url-pattern>
     </servlet-mapping>
-    
-    
-    <!-- Servlet ConnectUser -->
-    <servlet>
-        <servlet-name>connectUser</servlet-name>
-        <servlet-class>com.STI.servlet.ConnectUser</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>connectUser</servlet-name>
-        <url-pattern>/connectUser</url-pattern>
-    </servlet-mapping>
-    
-    
     <!-- Servlet Logout -->
     <servlet>
         <servlet-name>logout</servlet-name>
@@ -57,8 +41,6 @@
         <servlet-name>logout</servlet-name>
         <url-pattern>/signOut</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Servlet Play -->
     <servlet>
         <servlet-name>play</servlet-name>
@@ -68,8 +50,6 @@
         <servlet-name>play</servlet-name>
         <url-pattern>/play</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Servlet Refresh -->
     <servlet>
         <servlet-name>refresh</servlet-name>
@@ -79,8 +59,6 @@
         <servlet-name>refresh</servlet-name>
         <url-pattern>/refresh</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Servlet Subscription -->
     <servlet>
         <servlet-name>subscription</servlet-name>
@@ -90,19 +68,15 @@
         <servlet-name>subscription</servlet-name>
         <url-pattern>/subscribe</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Servlet Request -->
     <servlet>
-        <servlet-name>request</servlet-name>
+        <servlet-name>invitePlayer</servlet-name>
         <servlet-class>com.STI.servlet.Request</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>request</servlet-name>
-        <url-pattern>/request</url-pattern>
+        <servlet-name>invitePlayer</servlet-name>
+        <url-pattern>/invitePlayer</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Servlet ShowProfile -->
     <servlet>
         <servlet-name>showProfile</servlet-name>
@@ -112,8 +86,6 @@
         <servlet-name>showProfile</servlet-name>
         <url-pattern>/showProfile</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Servlet UpdateProfile -->
     <servlet>
         <servlet-name>updateProfile</servlet-name>
@@ -123,38 +95,39 @@
         <servlet-name>updateProfile</servlet-name>
         <url-pattern>/updateProfile</url-pattern>
     </servlet-mapping>
-    
-    
-    <!-- Servlet Invite -->
+    <!-- Servlet Game -->
     <servlet>
-        <servlet-name>invite</servlet-name>
-        <servlet-class>com.STI.servlet.Invit</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>invite</servlet-name>
-        <url-pattern>/invite</url-pattern>
-    </servlet-mapping>
-    
-    
-    <!-- Servlet Game | TO TAKE CARE OF -->
-    <servlet>
-        <servlet-name>Game</servlet-name>
+        <servlet-name>game</servlet-name>
         <servlet-class>com.STI.servlet.Game</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Game</servlet-name>
-        <url-pattern>/Game</url-pattern>
+        <servlet-name>game</servlet-name>
+        <url-pattern>/game</url-pattern>
     </servlet-mapping>
-
-
+    <!-- Servlet launchGame -->
+    <servlet>
+        <servlet-name>launchGame</servlet-name>
+        <servlet-class>com.STI.servlet.LaunchGame</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>launchGame</servlet-name>
+        <url-pattern>/launchGame</url-pattern>
+    </servlet-mapping>
+    <!-- Servlet updateGame -->
+    <servlet>
+        <servlet-name>updateGame</servlet-name>
+        <servlet-class>com.STI.servlet.UpdateGame</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateGame</servlet-name>
+        <url-pattern>/updateGame</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
 </web-app>

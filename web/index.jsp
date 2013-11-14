@@ -23,10 +23,9 @@
         <script src="./jquery/loginBar.js" language="JavaScript"></script>
         <script src="./jquery/partieEchecs.js" language="JavaScript" ></script>
         <script src="./jquery/partieEchecs_ancien.js" language="JavaScript" ></script> 
-        <!-- <script src="./jquery/refreshInvitationsList_AJAX.js" language="JavaScript"></script> -->
         <script src="./jquery/refreshLists_AJAX.js" language="JavaScript"></script>
-        <!-- <script src="./jquery/refreshPlayersList_AJAX.js" language="JavaScript"></script> -->
-        <script src="./jquery/subscription_FormValidation.js" language="JavaScript"></script>        
+        <script src="./jquery/subscription_FormValidation.js" language="JavaScript"></script>   
+        <script src="./jquery/updateChessboard_AJAX.js" language="JavaScript"></script>
         <script src="./jquery/updateProfile_FormValidation.js" language="JavaScript" ></script>
         
         <script language="Javascript" type="text/javascript">
@@ -77,45 +76,42 @@
                 <div id="centerPanel">
                     <%
                         if ("startGame".equals(actionStr))
-                        {   
-                            
-
+                        {
+                        %>
+                            <jsp:include page="partieEchecs.jsp" />         
+                        <%
+                        }
+                        else if ("subscription".equals(actionStr)) 
+                        {
+                        %>
+                            <jsp:include page="subscription.jsp" />         
+                        <%
+                        }
+                        else if (("play").equals(actionStr))
+                        {
+                        %>
+                            <p>
+                                Vous êtes maintenant inscrit dans la file d'attente des joueurs. 
+                            </p>
+                       <%
+                        }
+                        else if ("regles".equals(actionStr))
+                        {
+                       %>
+                            <jsp:include page="regles.jsp" />         
+                        <%
+                        } 
+                        else if ("showProfile".equals(actionStr))
+                        {
+                        %>
+                            <jsp:include page="profil.jsp" />
+                        <%
                         }
                         else {
-
-                            if ("subscription".equals(actionStr))
-                            {
-                            %>
-                                <jsp:include page="subscription.jsp" />         
-                            <%
-                            }
-                            else if (("play").equals(actionStr))
-                            {
-                            %>
-                                <p>
-                                    Vous êtes maintenant inscrit dans la file d'attente des joueurs. 
-                                </p>
-                           <%
-                            }
-                            else if ("regles".equals(actionStr))
-                            {
-                           %>
-                                <jsp:include page="regles.jsp" />         
-                            <%
-                            } 
-                            else if ("showProfile".equals(actionStr))
-                            {
-                            %>
-                                <jsp:include page="profil.jsp" />
-                            <%
-                            }
-                            else {
-                            %>
-                                 <jsp:include page="acceuil.jsp" /> 
-                                <!-- <jsp:include page="partieEchecs.jsp" /> -->
-                            <%
-                            }
-                        }
+                        %>
+                             <jsp:include page="acceuil.jsp" /> 
+                        <%
+                        }  
                     %>
                 </div>
 

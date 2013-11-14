@@ -22,6 +22,7 @@ public class Utilisateur {
     boolean connecte;
     boolean play;
     boolean invit;
+    String gameId;
 
     Partie[] partie;
 
@@ -33,6 +34,7 @@ public class Utilisateur {
         this.connecte = connecte;
         this.play = play;
         this.invit = invit;
+        this.gameId = "";
     }
     public Utilisateur(String n, String m)
     {
@@ -99,6 +101,16 @@ public class Utilisateur {
     public void setName(String name) {
         this.name = name;
     }
+    
+    
+    public void setGameId(String name) {
+        this.gameId = name;
+    }
+
+    public String getGameId() {
+        return gameId;
+    }
+    
     
     public boolean equals(Object x)
     { 

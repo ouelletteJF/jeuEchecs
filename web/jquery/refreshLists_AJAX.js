@@ -10,7 +10,7 @@ var xho;
 
 function Refresh()
 {       
-    url = "http://localhost:8080/Chess/Refresh";//"getInvit.exe?action=invit";
+    url = "http://localhost:8080/Chess/Refresh";
 
     if (window.ActiveXObject) //si Internet Explorer
     { 
@@ -49,9 +49,12 @@ function processStateChange()
             rep = xho.responseText;
               
             reponse = eval("("+rep+")");
-            document.getElementById("listeInvitations").innerHTML = reponse.invitation;
-            document.getElementById("listeJoueurs").innerHTML = reponse.ConnectUsers;
+            document.getElementById("listeInvitations").innerHTML = reponse.invitations;
+            document.getElementById("listeJoueurs").innerHTML = reponse.utilisateursConnectes;
             document.getElementById("listeParties").innerHTML = reponse.parties;
+            
+            if(reponse.startGame === "yes")
+                window.location = "index.jsp?action=startGame";
         }
         else
         {

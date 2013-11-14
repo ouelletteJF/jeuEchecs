@@ -1,3 +1,4 @@
+<%@page import="com.STI.entite.Utilisateur"%>
 <%
     /*
      * 
@@ -32,22 +33,22 @@
     %>   
             <ul>
                 <li>
-                    <a href='acceuil.exe?action=accueil'><span>Accueil</span></a>
+                    <a href='accueil.exe?action=accueil'><span>Accueil</span></a>
                 </li>
 
                 <% 
-                    if ("yes".equals((String)session.getAttribute("play")))
+                    if (((Utilisateur)session.getAttribute("connecte")).isPlay())
                     {
                 %>
                         <li>
-                            <a href='play.exe?action=play&&activity=observer'><span>Mode «Observateur»</span></a>
+                            <a href='play.exe?action=play&&activity=observe'><span>Mode «Observateur»</span></a>
                         </li>
                 <%   
                     }
                     else {
                 %>
                         <li>
-                            <a href='play.exe?action=play&&activity=ready'><span>Mode «Joueur»</span></a>
+                            <a href='play.exe?action=play&&activity=play'><span>Mode «Joueur»</span></a>
                         </li>
                 <%   
                     }
@@ -61,7 +62,7 @@
                     </li>
 
                     <li>
-                        <a href="logout.exe?action=logout"> <span>Déconnexion - </span> <%=session.getAttribute("connecte")%> </a>
+                        <a href="logout.exe?action=logout"> <span>Déconnexion - </span> <%= ((Utilisateur)session.getAttribute("connecte")).getName() %> </a>
                     </li>
            </ul>
 

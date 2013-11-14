@@ -1,6 +1,6 @@
 /*
  *	Fichier:	Request.java
- *	Contenu:	??
+ *	Contenu:	Servlet qui ajoute une invitation à la liste d'invitations d'un utilisateur
  *
  *	Auteur:		??
  *	Version:	1.0
@@ -9,16 +9,19 @@
  *	Dernière modification:	2 novembre 2013
  *	Raison mise à jour:	Suppression de commentaires.
  *
- *	À faire:    Que fais cette servlet?
+ *	À faire:    
  *
 */
 package com.STI.servlet;
 
 import com.STI.dao.Userdao;
 import com.STI.entite.Utilisateur;
+import com.STI.entite.Invitation;
 import com.STI.jdbc.Connexion;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,27 +38,23 @@ public class Request extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         HttpSession session = request.getSession(true);
+        Utilisateur user = (Utilisateur)session.getAttribute("connecte");
+        String invitedPlayer = request.getParameter("invitedPlayer");
+              
+        Map<String, List<Invitation> > invitations = (HashMap<String, List<Invitation> >)this.getServletContext().getAttribute("invitations");
+        List<Invitation> tempList = new LinkedList();
         
-        String invited = request.getParameter("invited"),
-        hote = (String) session.getAttribute("connecte");
+        if (invitations.containsKey(invitedPlayer))
+            tempList = invitations.get(invitedPlayer);
+            
+        tempList.add( new Invitation(user.getName(), invitedPlayer) );
+        invitations.put(invitedPlayer, tempList);
 
-        Map<String, String> invitations = (HashMap<String, String>)this.getServletContext().getAttribute("invitations");
-
-        if (invitations.containsKey(invited))
-        {
-            invitations.put(invited,invitations.get(invited)+","+hote);
-        }
-        else
-            invitations.put(invited,hote);
-
+        this.getServletContext().setAttribute("invitations", invitations);        
+        this.getServletContext().setAttribute("invited", invitedPlayer);
         
-        this.getServletContext().setAttribute("invitations", invitations);
-        System.out.println("Taille de la map invitation : "+invitations.size());
-        
-        this.getServletContext().setAttribute("invited", invited);
-        this.getServletContext().getRequestDispatcher("/index.jsp?action=acceuil").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/index.jsp?action=accueil").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

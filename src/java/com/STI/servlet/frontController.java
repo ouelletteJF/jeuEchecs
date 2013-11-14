@@ -57,79 +57,96 @@ public class frontController extends HttpServlet {
                     return;
                 }
 
-                if ("connectUser".equals(choix.trim())) {
+                else if ("connectUser".equals(choix.trim())) {
                     r = this.getServletContext().getRequestDispatcher("/connectUser");
                     r.forward(request, response);
                     return;
                 }
-
-                if ("logout".equals(choix)) {
+                
+                else if ("logout".equals(choix)) {
                     r = this.getServletContext().getRequestDispatcher("/signOut");
                     r.forward(request, response);
                     return;
                 }
-                if ("refresh".equals(choix)) {
+                
+                else if ("refresh".equals(choix)) {
                     r = this.getServletContext().getRequestDispatcher("/refresh");
                     r.forward(request, response);
                     return;
                 }
 
-                if ("subscribe".equals(choix)) {
+                else if ("subscribe".equals(choix)) {
                     r = this.getServletContext().getRequestDispatcher("/subscribe");
                     r.forward(request, response);
                     return;
                 }
                 
-                if ("invite".equals(choix)) {
+                else if ("invite".equals(choix)) {
                     r = this.getServletContext().getRequestDispatcher("/invite");
                     r.forward(request, response);
                     return;
                 }
 
-                if ("request".equals(choix)) {
-                    r = this.getServletContext().getRequestDispatcher("/request");
+                else if ("invitePlayer".equals(choix)) {
+                    r = this.getServletContext().getRequestDispatcher("/invitePlayer");
                     r.forward(request, response);
                     return;
                 }
 
-                if ("play".equals(choix)) {
+                else if ("play".equals(choix)) {
                     r = this.getServletContext().getRequestDispatcher("/play");
                     r.forward(request, response);
                     return;
                 }
-                if ("Game".equals(choix))
+                
+                else if ("game".equals(choix))
                 {
-                    r = this.getServletContext().getRequestDispatcher("/Game");  
+                    r = this.getServletContext().getRequestDispatcher("/game");  
+                    r.forward(request, response);                 
+                    return;
+                }
+                
+                else if ("launchGame".equals(choix))
+                {
+                    r = this.getServletContext().getRequestDispatcher("/launchGame");  
+                    r.forward(request, response);                 
+                    return;
+                }
+                
+                else if ("updateChessboard".equals(choix))
+                {
+                    r = this.getServletContext().getRequestDispatcher("/updateGame");  
                     r.forward(request, response);                 
                     return;
                 }
 
-                if ("showProfile".equals(choix))
+                else if ("showProfile".equals(choix))
                 {
                     r = this.getServletContext().getRequestDispatcher("/showProfile");  
                     r.forward(request, response);                 
                     return;
                 }
-                if ("updateProfile".equals(choix))
+                
+                else if ("updateProfile".equals(choix))
                 {
                     r = this.getServletContext().getRequestDispatcher("/updateProfile");  
                     r.forward(request, response);                 
                 }
                 
-                if ("regles".equals(choix))
+                else if ("regles".equals(choix))
                 {
                     r = this.getServletContext().getRequestDispatcher("/index.jsp"); 
                     r.forward(request, response);     
                     return;
                 } 
                 
-                if ("subscription".equals(choix)) {
+                else if ("subscription".equals(choix)) {
                     r = this.getServletContext().getRequestDispatcher("/index.jsp");
                     r.forward(request, response);
                     return;
                 }
                 
-                if ("accueil".equals(choix))
+                else if ("accueil".equals(choix))
                 {
                     r = this.getServletContext().getRequestDispatcher("/index.jsp");  
                     r.forward(request, response);                   

@@ -51,9 +51,8 @@ public class Logout extends HttpServlet {
 
         // déconnexion
         HttpSession session = request.getSession(true);
-        String      name    = (String) session.getAttribute("connecte");
         Userdao     dao     = new Userdao(Connexion.getInstance());
-        Utilisateur user    = dao.read(name);
+        Utilisateur user    = dao.read( ((Utilisateur)session.getAttribute("connecte")).getName() );
 
         dao.updateConnect(user, 0);
         dao.updatePlay(user, 0);
@@ -70,7 +69,7 @@ public class Logout extends HttpServlet {
         this.getServletContext().setAttribute("invitations", invitation);
         this.getServletContext().removeAttribute("Gamers");
         
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp?action=accueil");
         r.forward(request, response);
     }
 

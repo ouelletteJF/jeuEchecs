@@ -39,10 +39,10 @@ public class AfficherProfil extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
-        String user = (String)session.getAttribute("connecte"); 
+        Utilisateur user = (Utilisateur)session.getAttribute("connecte"); 
         
         Userdao uDao = new Userdao(Connexion.getInstance());
-        Utilisateur u = uDao.read(user.trim());
+        Utilisateur u = uDao.read(user.getName().trim());
           
         request.setAttribute("leProfil", u);            
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
