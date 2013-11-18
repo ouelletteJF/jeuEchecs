@@ -14,9 +14,27 @@
 */
 package com.STI.entite;
 
+import javax.persistence.Entity;
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Echiquier {
+
+@Entity
+@Table(name = "echiquier")
+@XmlRootElement
+
+
+public class Echiquier implements Serializable {
     int max = 8;
+    @Id
     Piece[][] listPieces = new Piece[max][max];
     Position posPieceCourante;
 	

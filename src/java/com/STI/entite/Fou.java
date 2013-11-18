@@ -15,7 +15,33 @@
 
 package com.STI.entite;
 
-public class Fou extends Piece{
+
+import javax.persistence.Entity;
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@Entity
+@Table(name = "fou")
+@XmlRootElement
+
+
+public class Fou extends Piece implements Serializable{
+    
+     @Id
+    private String couleur;
+
+    public Fou() {
+    }
+
 
     public Fou(String couleur) {
         this.couleur= couleur;

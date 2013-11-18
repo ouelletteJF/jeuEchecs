@@ -14,8 +14,27 @@
 */
 
 package com.STI.entite;
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Cavalier extends Piece {
+@Entity
+@Table(name = "cavalier")
+@XmlRootElement
+
+public class Cavalier extends Piece implements Serializable {
+    @Id
+    private String couleur;
+
+    public Cavalier() {
+    }
 
     public Cavalier(String couleur) {
         this.couleur = couleur;
@@ -51,5 +70,13 @@ public class Cavalier extends Piece {
         
         else if( "noir".equals(this.couleur) )
             this.image = "./images/nCavalier.gif";
+    }
+
+    public Long getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(Long couleur) {
+        this.couleur = couleur;
     }
 }
