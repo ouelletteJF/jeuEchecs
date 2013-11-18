@@ -44,19 +44,7 @@ public  abstract class Piece implements Serializable {
     @Column(name = "ligne")
     private int ligne;
 
-      @Id
-    private String couleur;
 
-     String image;
-    
-    
-    public String getCouleur() {
-        return this.couleur;
-    }
-    
-    public String getImage() {
-        return this.image;
-    }
     
     protected abstract void setImage();    
     public abstract boolean validerDep(Position posDepart, Position posFinal);
@@ -93,6 +81,10 @@ public  abstract class Piece implements Serializable {
         this.couleur = couleur;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getImage() {
         return image;
     }

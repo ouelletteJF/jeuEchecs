@@ -15,8 +15,29 @@
 
 package com.STI.entite;
 
-public class Reine extends Piece {
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+@Entity
+@Table(name = "reine")
+@XmlRootElement
 
+
+public class Reine extends Piece {
+  @Id
+    @Basic(optional = false)
+    @Column(name = "couleur")
+    private String couleur;
+    @Basic(optional = false)
+    @Column(name = "image")
+    private String image;
+
+    public Reine() {
+    }
+   
     public Reine(String couleur) {
         this.couleur= couleur;
         setImage();

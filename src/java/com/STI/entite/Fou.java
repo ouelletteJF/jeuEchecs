@@ -38,7 +38,8 @@ public class Fou extends Piece implements Serializable{
     
      @Id
     private String couleur;
-
+    private String image;
+    
     public Fou() {
     }
 

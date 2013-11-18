@@ -15,8 +15,29 @@
 
 package com.STI.entite;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+@Entity
+@Table(name = "tour")
+@XmlRootElement
+
+
 public class Tour extends Piece{
-	
+	  @Id
+    @Basic(optional = false)
+    @Column(name = "couleur")
+    private String couleur;
+    @Basic(optional = false)
+    @Column(name = "image")
+    private String image;
+
+    public Tour() {
+    }
+   
     public Tour(String couleur)
     {
         this.couleur= couleur;

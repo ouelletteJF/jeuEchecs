@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Cavalier extends Piece implements Serializable {
     @Id
     private String couleur;
+    private String image;
 
     public Cavalier() {
     }
@@ -72,11 +73,12 @@ public class Cavalier extends Piece implements Serializable {
             this.image = "./images/nCavalier.gif";
     }
 
-    public Long getCouleur() {
+        public String getCouleur() {
         return couleur;
     }
 
-    public void setCouleur(Long couleur) {
+    public void setCouleur(String couleur) {
         this.couleur = couleur;
     }
+    
 }

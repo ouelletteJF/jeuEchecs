@@ -15,8 +15,28 @@
 
 package com.STI.entite;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+@Entity
+@Table(name = "pion")
+@XmlRootElement
+
 public class Pion extends Piece {
-  
+     @Id
+    @Basic(optional = false)
+    @Column(name = "couleur")
+    private String couleur;
+    @Basic(optional = false)
+    @Column(name = "image")
+    private String image;
+
+    public Pion() {
+    }
+   
 	
     public Pion(String couleur)
     {
