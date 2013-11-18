@@ -71,6 +71,13 @@ public class Partie {
     public Echiquier getTable() {
         return table;
     }
+    
+    public void setTourDebut(){     // pour generer aléatoirement le premier qui jouera    
+    int rdm = (int) (Math.random() * 2 );
+    this.setTour(rdm);
+    
+    }  
+    
 	
 		
 }
