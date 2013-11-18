@@ -70,3 +70,35 @@ function getCell(cell)
     
     alert("Ligne " + row + ", colonne " + col);
 }
+
+
+
+
+function dragDrop()
+{
+    var i, j;
+
+    // Reinitialisation des images
+    for (i = 0; i < 8; i++ )
+       l = "l" + Integer.toString(i);
+        for (j = 0; j < 8; j++ ) 
+            c = "l" + Integer.toString(i);
+        {
+            $("lc").draggable({
+                start: function(event, ui) {
+
+                     document.getElementById('echiquier').rows[prevL].cells[prevC].innerHTML = "";  }
+                       });
+
+               $("lc").droppable({
+                drop: function( event, ui ) {
+
+             document.getElementById('echiquier').rows[newL].cells[newC].innerHTML = document.getElementById('echiquier').rows[prevL].cells[prevC].innerHTML;
+
+                }
+            });
+            
+            
+
+        }
+}
